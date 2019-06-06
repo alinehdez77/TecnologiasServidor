@@ -27,8 +27,8 @@ import mipasswordinterface.MPInterface;
 import mipasswordinterface.Usuario;
 
 /**
- *
- * @author texch
+ *Esta clase servidor hacemos la conexion con la bd.
+ * @author Monse
  */
 public class MiPasswordServer extends UnicastRemoteObject implements MPInterface {
 
@@ -36,12 +36,18 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
   private static final long serialVersionUID = 9090898209349823403L;
   private final int PORT = 5254;
 
+  /**
+   * es el constructor de la clase, donde se inicia el servidor y se hace la conexion con la bd.
+   */
   public MiPasswordServer() throws RemoteException {
     iniciarServer();
     ConnectDatabase();
 
   }
 
+  /**
+   * Este metodo nos permite iniciar el servidor, hacemos una instancia de la clase.
+   */
   public void iniciarServer() {
     try {
 
@@ -61,6 +67,7 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
   }
 
   /**
+   * Main para hacer uso del servidor.
    * @param args the command line arguments
    */
   public static void main(String[] args) throws RemoteException {
@@ -68,6 +75,11 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
     MiPasswordServer server = new MiPasswordServer();
   }
 
+  /*
+   *Este metodo nos regresa un usuario.
+   *@param correo, pass
+   *@return user
+   */
   @Override
   public Usuario getUsuario(String correo, String pass) throws RemoteException {
     Usuario user = null;
@@ -95,7 +107,11 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
     
     return user;
   }
-
+  
+  /*
+   *Este metodo nos permite agregar un usuario a la bd.
+   *@param usuario
+  */
   @Override
   public void registrarUsuario(Usuario usuario) throws RemoteException {
     
@@ -167,6 +183,11 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
   }
 
   @Override
+  /*
+   *Este metodo nos regresa todas las bovedas de un usuario.  
+   *@param username
+   *return bovedas
+  */
   public ArrayList<Boveda> getAllBovedas(String username) throws RemoteException {
     ArrayList<Boveda> bovedas = new ArrayList<>();
     Usuario u = null;
@@ -205,7 +226,12 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
     return bovedas;
   }
 
+
   @Override
+  /*
+   *este metodo nos permite agregar una boveda.
+   *@param boveda
+  */
   public void agregarBoveda(Boveda boveda) throws RemoteException {
 
     try {
@@ -224,6 +250,10 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
   }
 
   @Override
+  /*
+  *Este metodo nos permite regresar una boveda.
+  
+  */
   public Boveda getBoveda(Boveda bov) throws RemoteException {
     Boveda boveda = null;
     Usuario u = null;
@@ -275,6 +305,10 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
   }
 
   @Override
+  /*
+  *Este metodo elimina una boveda seleccionada.
+  *@param boveda
+  */
   public void eliminarBoveda(Boveda boveda) throws RemoteException {
     try {
       PreparedStatement st;
@@ -286,6 +320,10 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
     }
   }
 
+  /*
+  *este metodo regresa todas las llaves de una boveda.
+  *@param boveda
+  */
   @Override
   public ArrayList<Llave> getAllLlaves(Boveda boveda) throws RemoteException {
     ArrayList<Llave> llaves = new ArrayList<>();
@@ -330,6 +368,10 @@ public class MiPasswordServer extends UnicastRemoteObject implements MPInterface
     return llaves;
   }
 
+  /*
+   *este metodo nos permite agregar una llave.
+  *@param llave
+  */
   @Override
   public void agregarLlave(Llave llave) throws RemoteException {
      try {

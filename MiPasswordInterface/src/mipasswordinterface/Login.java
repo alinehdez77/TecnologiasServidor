@@ -18,6 +18,9 @@ public class Login implements Serializable{
   
   public String password;
   
+  /*
+  *Constructor de la clase.
+  */
   public Login(String correo, String password){
     this.correo =  correo;
     this.password = password;

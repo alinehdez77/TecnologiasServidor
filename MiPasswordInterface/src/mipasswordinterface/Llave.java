@@ -21,10 +21,16 @@ public class Llave implements Serializable{
   private String password;
   private Boveda boveda;
   
+  /*
+  *Constructor vacio de la clase.
+  */
   public Llave() {
     
   }
   
+  /*
+  *Constructor de la clase.
+  */
   public Llave(String nombre,String url, String username, String password, Boveda boveda, int id) {
     this.nombre = nombre;
     this.url = url;

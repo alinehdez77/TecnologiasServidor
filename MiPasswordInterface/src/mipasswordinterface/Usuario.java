@@ -26,6 +26,9 @@ public class Usuario implements Serializable{
   private String clavePrivada;
   private List<Boveda> bovedas;
 
+  /*
+  *Constructor de la clase.
+  */
   public Usuario(String username, String nombre, String apellido, String telefono, 
       String password, String correo) {
     
@@ -36,7 +39,9 @@ public class Usuario implements Serializable{
     this.password = password;
     this.correo = correo;
   }
-  
+  /*
+  *Constructor vacio de la clase.
+  */
   public Usuario() {
     
   }

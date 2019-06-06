@@ -21,11 +21,15 @@ public class Boveda implements Serializable{
   private String nombre;
   private Usuario owner;
   private List<Llave> llaves;
-  
+  /*
+  *Constructor vacio de la clase.
+  */
   public Boveda() {
     
   }
-  
+  /*
+  *Constructor de la clase.
+  */
   public Boveda(String nombre, Usuario owner) {
     llaves = new ArrayList<>();
     this.nombre = nombre;
